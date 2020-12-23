@@ -3,7 +3,7 @@ from .models import Supplier
 
 # Create your views here.
 def supplier_list(request):
-    suppliers = Supplier.objects.all()
+    suppliers = Supplier.objects.exclude(phone__isnull=True).exclude(phone__exact='')
     context = {
        'supplier_list': suppliers
     }
